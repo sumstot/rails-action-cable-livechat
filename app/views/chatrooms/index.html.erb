@@ -1,0 +1,4 @@
+<h1>Welcome to the Chat App!</h1>
+<% Chatroom.all.each do |chatroom| %>
+  <h6><%= link_to chatroom.name, chatroom_path(chatroom.id) %></h6>
+<% end %>
