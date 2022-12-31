@@ -2,8 +2,11 @@
   <div class="d-flex justify-content-center">
     <h1>Welcome to the Chat App!</h1>
   </div>
-  <%= link_to 'Add new chatroom',  new_chatroom_path, :class => 'btn btn-primary'%>
-  <% Chatroom.all.each do |chatroom| %>
-    <h6><%= link_to chatroom.name, chatroom_path(chatroom.id), :class => "chat-links" %></h6>
-  <% end %>
+  <%= link_to 'Add new chatroom',  new_chatroom_path, :class => 'btn btn-primary mb-3'%>
+  <hr />
+  <div class="chatroom-conatiner">
+    <% Chatroom.all.each do |chatroom| %>
+        <%= link_to chatroom.name, chatroom_path(chatroom.id), :class => "chat-links" %>
+    <% end %>
+  </div>
 </div>
