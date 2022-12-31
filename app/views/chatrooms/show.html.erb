@@ -9,7 +9,10 @@ data-chatroom-subscription-chatroom-id-value="<%=@chatroom.id %>">
       <%= link_to 'Add new chatroom', new_chatroom_path%>
       <h5>Chatrooms</h5>
       <% Chatroom.all.each do |chatroom| %>
-        <div><%= link_to chatroom.name, chatroom_path(chatroom.id) %></div>
+        <div class="chat-delete-container d-flex justify-content-between">
+          <div><%= link_to chatroom.name, chatroom_path(chatroom.id) %></div>
+          <div><%= link_to 'Delete', chatroom_path(chatroom.id), method: :delete %></div>
+        </div>
       <% end %>
       <hr />
       <% User.all.each do |user| %>
