@@ -1,17 +1,17 @@
-<div class="container chatroom"
+<div class="chatroom-container"
 data-controller="chatroom-subscription"
-data-chatroom-subscription-chatroom-id-value="<%=@chatroom.id %>">
+data-chatroom-subscription-chatroom-id-value="<%=@chatroom.id %>"
+data-chatroom-subscription-current-user-id-value="<%= current_user.id%>">
   <div class="row">
       <div class="d-flex justify-content-center">
         <h1><%= @chatroom.name %></h1>
       </div>
-    <div class="col-sm-2">
+    <div class="col-sm-2 ms-2">
       <%= link_to 'Add new chatroom', new_chatroom_path%>
       <h5>Chatrooms</h5>
       <% Chatroom.all.each do |chatroom| %>
         <div class="chat-delete-container d-flex justify-content-between">
           <div><%= link_to chatroom.name, chatroom_path(chatroom.id) %></div>
-          <div><%= link_to 'Delete', chatroom_path(chatroom.id), method: :delete %></div>
         </div>
       <% end %>
       <hr />
@@ -22,7 +22,11 @@ data-chatroom-subscription-chatroom-id-value="<%=@chatroom.id %>">
     <div class="col-sm-10">
       <div class="messages" data-chatroom-subscription-target="messages">
         <% @chatroom.messages.each do |message| %>
-          <%= render "messages/message", message: message %>
+          <div class="message-row d-flex <%=message.sender?(current_user) ? 'justify-content-end' : 'justify-content-start'  %>">
+            <div class="<%= message.sender?(current_user) ? 'sender-style' : 'receiver-style'%>">
+              <%= render "messages/message", message: message %>
+            </div>
+          </div>
         <% end %>
       </div>
       <%= simple_form_for [@chatroom, @message],
