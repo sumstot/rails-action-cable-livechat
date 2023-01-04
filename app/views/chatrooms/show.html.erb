@@ -5,12 +5,15 @@ data-chatroom-subscription-current-user-id-value="<%= current_user.id%>">
   <div class="row">
 
   <div class="col-sm-2 chatrooms-list">
-    <%= link_to 'Add new chatroom', new_chatroom_path %>
-    <h5>Chatrooms</h5>
+    <div class="mb-4 mt-4">
+      <%= link_to 'Create #Chatroom', new_chatroom_path, { :class=>"new-room-button" } %>
+    </div>
+    <h5 class="mb-3">Chatrooms</h5>
     <% Chatroom.all.each do |chatroom| %>
-      <div><%= link_to chatroom.name, chatroom_path(chatroom.id) %></div>
+      <div class="mb-2"><%= link_to "##{chatroom.name}", chatroom_path(chatroom.id), { :class=>"chatroom-links" }  %></div>
     <% end %>
     <hr />
+    <h5 class="mb-3">Current Users</h5>
     <% User.all.each do |user| %>
       <p><%= user.nickname %></p>
     <% end %>
