@@ -2,7 +2,7 @@
   <div class="d-flex justify-content-center">
     <h1>Welcome to the Chat App!</h1>
   </div>
-  <%= link_to 'Add new chatroom',  new_chatroom_path, :class => 'btn btn-primary mb-3'%>
+  <%= link_to 'Create #Chatroom',  new_chatroom_path, { :class=>"new-room-button index" }%>
   <hr />
   <div class="chatroom-conatiner">
     <% Chatroom.all.each do |chatroom| %>
