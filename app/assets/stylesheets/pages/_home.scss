@@ -1,15 +1,18 @@
 // Specific CSS for your home-page
 .chat-links {
+  list-style-type: none;
   font-size: 20px;
   font-weight: 500;
-  text-decoration: none;
-  background-color: #1f9fe0;
   color: #ffffff;
   padding: 8px;
-  border-radius: 10px;
-  margin: 16px;
+  padding-left: 0px;
+  margin-bottom: 16px;
 }
 
+.chat-links-a {
+  color: #ffffff;
+  text-decoration: none;
+}
 .chatroom-container {
-  display: flex;
+  height: 80vh;
 }

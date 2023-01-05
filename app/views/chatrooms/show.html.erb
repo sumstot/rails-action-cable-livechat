@@ -6,7 +6,7 @@ data-chatroom-subscription-current-user-id-value="<%= current_user.id%>">
 
   <div class="col-sm-2 chatrooms-list">
     <div class="mb-4 mt-4">
-      <%= link_to 'Create #Chatroom', new_chatroom_path, { :class=>"new-room-button" } %>
+      <%= link_to 'New #Chatroom', new_chatroom_path, { :class=>"new-room-button" } %>
     </div>
     <h5 class="mb-3">Chatrooms</h5>
     <% Chatroom.all.each do |chatroom| %>
@@ -15,7 +15,7 @@ data-chatroom-subscription-current-user-id-value="<%= current_user.id%>">
     <hr />
     <h5 class="mb-3">Current Users</h5>
     <% User.all.each do |user| %>
-      <p><%= user.nickname %></p>
+      <p><%= link_to user.nickname, user %></p>
     <% end %>
   </div>
   <div class="col-sm-10">
@@ -32,7 +32,7 @@ data-chatroom-subscription-current-user-id-value="<%= current_user.id%>">
       <% end %>
     </div>
     <%= simple_form_for [@chatroom, @message],
-    html: { data: { action: "turbo:submit-end->chatroom-subscription#resetForm" }, class: "d-flex"} do |f| %>
+    html: { data: { action: "turbo:submit-end->chatroom-subscription#resetForm" }, class: "msg-form d-flex"} do |f| %>
       <%= f.input :content,
       label: false,
       placeholder: "Message ##{@chatroom.name}",
