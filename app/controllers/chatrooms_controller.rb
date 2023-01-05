@@ -16,6 +16,7 @@ class ChatroomsController < ApplicationController
     @current_user = current_user
     @users = User.all_except(@current_user)
     @chatroom = Chatroom.find(params[:id])
+    @chatrooms = Chatroom.public_rooms
     @message = Message.new
   end
 
@@ -24,6 +25,8 @@ class ChatroomsController < ApplicationController
     @chatroom.destroy
     redirect_to chatrooms_path(@chatroom)
   end
+
+
 
   private
 

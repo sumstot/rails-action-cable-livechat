@@ -1,5 +1,6 @@
 class MessagesController < ApplicationController
   def create
+    @users = User.all_except(@current_user)
     @chatroom = Chatroom.find(params[:chatroom_id])
     @message = Message.new(message_params)
     @message.chatroom = @chatroom

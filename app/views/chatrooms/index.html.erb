@@ -7,7 +7,9 @@
     <%= link_to 'Create #Chatroom',  new_chatroom_path, { :class=>"new-room-button index" }%>
     <ul>
       <% Chatroom.all.each do |chatroom| %>
+        <% unless chatroom.is_private? %>
           <li class="chat-links"><%= link_to "##{chatroom.name}", chatroom_path(chatroom.id), :class => "chat-links-a" %></li>
+        <% end %>
       <% end %>
     </ul>
   </div>
